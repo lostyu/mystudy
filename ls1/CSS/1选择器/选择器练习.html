@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<title>选择器练习</title>
+	<style>
+		body{
+			color: #333;
+		}
+		a{
+			color: #333;
+		}
+
+
+		.nav li a{
+			color: #888;
+		}
+		.nav li a:hover{
+			color: #888;
+		}
+		.nav .select a,
+		.nav .select a:hover {
+			color: #d35757;
+		}
+
+
+		.m-title li a{
+			color: #666666;
+		}
+		.m-title li.select a{
+			color: #c20c0c;
+		}
+
+
+		.newList p{
+			color: #999999;
+		}
+
+
+		.hotList .author a{
+			color: #666;
+		}
+		.hotList .txt p{
+			color: #999999;
+		}
+	</style>
+	<script></script>
+</head>
+<body>
+
+<div class="doc">
+
+	<!-- 导航模块 -->
+	<div class="nav">
+		<ul>
+			<li><a href="javascript:;">明星主播</a></li>
+			<li><a href="javascript:;">音乐故事</a></li>
+			<li class="select"><a href="javascript:;">情感驿站</a></li>
+			<li><a href="javascript:;">娱乐八卦</a></li>
+			<li><a href="javascript:;">广播剧</a></li>
+			<li><a href="javascript:;">脱口秀</a></li>
+			<li><a href="javascript:;">相声曲艺</a></li>
+			<li><a href="javascript:;">有声读物</a></li>
+			<li><a href="javascript:;">人文历史</a></li>
+			<li><a href="javascript:;">乐在旅行</a></li>
+			<li><a href="javascript:;">外语</a></li>
+			<li><a href="javascript:;">儿童</a></li>
+			<li><a href="javascript:;">动漫</a></li>
+			<li><a href="javascript:;">翻唱</a></li>
+			<li><a href="javascript:;">影视周边</a></li>
+		</ul>
+	</div>
+	<!-- /导航模块 -->
+
+
+	<!-- 模块标题 -->
+	<div class="m-title">
+		<h2>优秀新电台</h2>
+	</div>
+	<!-- /模块标题 -->
+
+	
+	<!-- 优秀新电台模块 -->
+	<div class="newList">		
+		<ul>
+			<li>
+				<a href="javascript:;"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称"></a>
+				<h3><a href="javascript:;">你妹电台</a></h3>
+				<p>好妹妹乐队是由两个热情洋溢青春青年组成</p>
+			</li>
+			<li>
+				<a href="javascript:;"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称"></a>
+				<h3><a href="javascript:;">你妹电台</a></h3>
+				<p>好妹妹乐队是由两个热情洋溢青春青年组成</p>
+			</li>
+			<li>
+				<a href="javascript:;"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称"></a>
+				<h3><a href="javascript:;">你妹电台</a></h3>
+				<p>好妹妹乐队是由两个热情洋溢青春青年组成</p>
+			</li>
+			<li>
+				<a href="javascript:;"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称"></a>
+				<h3><a href="javascript:;">你妹电台</a></h3>
+				<p>好妹妹乐队是由两个热情洋溢青春青年组成</p>
+			</li>
+			<li>
+				<a href="javascript:;"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称"></a>
+				<h3><a href="javascript:;">你妹电台</a></h3>
+				<p>好妹妹乐队是由两个热情洋溢青春青年组成</p>
+			</li>
+		</ul>
+	</div>
+	<!-- /优秀新电台模块 -->
+	
+
+
+	<!-- 模块标题 -->
+	<div class="m-title">
+		<h2>最热电台</h2>
+		<ul>
+			<li class="select"><a href="javascript:;">上升最快</a></li>
+			<li><a href="javascript:;">最热电台</a></li>
+		</ul>
+	</div>
+	<!-- /模块标题 -->
+
+
+	<!-- 最热电台 -->
+	<div class="hotList">
+		<ul>
+			<li>
+				<a class="img" href="javascript:;"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称"></a>
+				<div class="txt">
+					<h3><a href="javascript:;">你妹电台</a></h3>
+					<div class="author">
+						<a href="javascript:;">好妹妹乐队</a><span class="vip"></span>
+					</div>					
+					<p>共58期 订阅2566次</p>
+				</div>				
+			</li>
+			<li>
+				<a class="img" href="javascript:;"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称"></a>
+				<div class="txt">
+					<h3><a href="javascript:;">你妹电台</a></h3>
+					<div class="author">
+						<a href="javascript:;">好妹妹乐队</a><span class="vip"></span>
+					</div>					
+					<p>共58期 订阅2566次</p>
+				</div>				
+			</li>
+			<li>
+				<a class="img" href="javascript:;"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称"></a>
+				<div class="txt">
+					<h3><a href="javascript:;">你妹电台</a></h3>
+					<div class="author">
+						<a href="javascript:;">好妹妹乐队</a><span class="vip"></span>
+					</div>					
+					<p>共58期 订阅2566次</p>
+				</div>				
+			</li>
+			<li>
+				<a class="img" href="javascript:;"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称"></a>
+				<div class="txt">
+					<h3><a href="javascript:;">你妹电台</a></h3>
+					<div class="author">
+						<a href="javascript:;">好妹妹乐队</a><span class="vip"></span>
+					</div>					
+					<p>共58期 订阅2566次</p>
+				</div>				
+			</li>
+			<li>
+				<a class="img" href="javascript:;"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称"></a>
+				<div class="txt">
+					<h3><a href="javascript:;">你妹电台</a></h3>
+					<div class="author">
+						<a href="javascript:;">好妹妹乐队</a><span class="vip"></span>
+					</div>					
+					<p>共58期 订阅2566次</p>
+				</div>				
+			</li>
+			<li>
+				<a class="img" href="javascript:;"><img src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt="电台名称"></a>
+				<div class="txt">
+					<h3><a href="javascript:;">你妹电台</a></h3>
+					<div class="author">
+						<a href="javascript:;">好妹妹乐队</a><span class="vip"></span>
+					</div>					
+					<p>共58期 订阅2566次</p>
+				</div>				
+			</li>
+		</ul>
+	</div>
+	<!-- /最热电台 -->
+
+</div>
+</body>
+</html>
