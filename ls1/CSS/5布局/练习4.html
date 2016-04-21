@@ -9,13 +9,54 @@
     <title>布局练习</title>
     <script></script>
     <style>
+    	/* reset */
+    	html,body,p,h1,h2,h3,h4,h5,h6,ul,ol{
+    		margin: 0;
+    		padding: 0;
+    	}
+    	li{
+    		list-style: none;
+    	}
+
+    	body{
+    		font: 12px/1.5 simsun;
+		    color: #333;
+		    background: #f5f5f5;
+    	}
 		a{
 			color: #333;
+			text-decoration: none;
+		}
+		a:hover{
+			text-decoration: underline;
+		}
+
+		/* 辅助样式 */
+		.clearfix:after{
+			content: '';
+			display: block;
+			clear: both;
+			height: 0;
+			visibility: hidden;
+			overflow: hidden;	
+		}
+		.clearfix{zoom:1;}
+
+
+		/* 布局 */
+		.g-doc{
+			width: 900px;
+			padding: 40px;
+			margin-left: auto;
+			margin-right: auto;
+			border: 1px solid #d3d3d3;
+			border-width: 0 1px;
+			background: #fff;
 		}
 
 
 
-
+		/* 图标 */
 		.u-icon{
 			display: inline-block;
 			background: url(img/sprite-icon.png) no-repeat;
@@ -35,7 +76,41 @@
 
 
 
-
+		/* 公共标题 */
+		.m-title{
+			height: 44px;
+			line-height: 44px;
+			margin-bottom: 20px;
+			overflow: hidden;
+			border-bottom: 2px solid #c20c0c;
+		}
+		.m-title h2{
+			float: left;
+			font-size: 24px;
+			font-family: '微软雅黑';
+			font-weight: normal;
+		}
+		.m-title .sort{
+			float: right;
+			line-height: 34px;
+			margin-top: 10px;
+		}
+		.m-title .sort li{
+			float: left;
+		}
+		.m-title .sort li+li{
+			position: relative;
+			padding-left: 10px;
+			margin-left: 10px;
+		}
+		.m-title .sort li+li:before{
+			content: '';
+			position: absolute;
+			left: 0;
+			top: 10px;
+			height: 12px;
+			border-left: 1px solid #c7c7c7;
+		}
 		.m-title .sort a{
 			color: #666;
 		}
@@ -47,19 +122,43 @@
 
 
 
-		.nav a{
-			color: #888;
+		/* 导航 */
+		.nav{margin-bottom: 30px;}
+		.nav ul{
+			margin: -25px 0 0 -33px;
 		}
-		.nav .active a{
+		.nav li{
+			float: left;
+			margin: 25px 0 0 33px;
+		}
+		.nav a{
+			display: block;
+			width: 66px;
+			height: 66px;
+			border: 2px solid transparent;
+			border-radius: 2px;
+			color: #888;
+			text-align: center;
+		}
+		.nav a:hover{			
+			background-color: #f6f7f7;
+			text-decoration: none;
+		}		
+		.nav li.active a,
+		.nav li.active a:hover {
+			border-color: #db5e5e;
 			color: #d35757;
+			background: none;					
 		}
 		.nav li a:before{
 			content: '';
 			display: block;
 			width: 40px;
 			height: 35px;
+			margin: 8px auto 0;
 			background: url(img/nav.png) no-repeat;
 		}
+
 		.nav .mxzb a:before{ background-position: 0 0; }
 		.nav .yygs a:before{ background-position: 0 -40px; }
 		.nav .qgyz a:before{ background-position: 0 -80px; }
@@ -97,8 +196,31 @@
 
 
 
-
+		/* 电台 */
+		.transceiver{
+			margin-bottom: 30px;
+			line-height: 18px;
+		}
+		.transceiver ul{
+			overflow: hidden;
+			margin-left: -37px;
+		}
+		.transceiver li{
+			float: left;
+			width: 150px;
+			margin-left: 37px;
+		}
+		.transceiver li img{
+			display: block;
+			width: 150px;
+			height: 150px;
+		}
+		.transceiver li h3{
+			margin-top: 10px;
+		}
 		.transceiver p{
+			margin-top: 5px;
+			font-size: 12px;
 			color: #999;
 		}
 
@@ -106,9 +228,54 @@
 
 
 
-
+		/* 热门电台 */
+		.transceiver-hot ul{
+			overflow: hidden;
+			margin-left: -30px;
+			margin-top: -40px;
+		}
+		.transceiver-hot li{
+			float: left;
+			width: 435px;
+			margin-left: 30px;
+			margin-top: 20px;
+			padding-top: 19px;
+			border-top: 1px solid #e7e7e7;
+		}
+		.transceiver-hot .pic{
+			float: left;
+			width: 120px;
+			height: 120px;
+			overflow: hidden;
+		}
+		.transceiver-hot .pic img{
+			width: 120px;
+			height: 120px;
+		}
+		.transceiver-hot .text{
+			margin-left: 140px;
+		}
+		.transceiver-hot .text h3{
+			height: 60px;
+			line-height: 60px;
+			font-size: 16px;
+			overflow: hidden;
+		}
+		.transceiver-hot .text h3 a{
+			display: inline-block;
+			line-height: normal;
+			vertical-align: middle;
+		}
 		.transceiver-hot .author a{
+			padding: 0 5px;
 			color: #666;
+		}
+		.transceiver-hot .info{
+			margin-top: 8px;
+			color: #999;
+		}
+		.transceiver-hot .info span{
+			margin-right: 10px;
 		}
     </style>
 </head>
@@ -118,7 +285,7 @@
 	
 	<!-- 导航 -->
 	<div class="nav">
-		<ul>
+		<ul class="clearfix">
 			<li class="mxzb"><a href="javascript:;">明星主播</a></li>
 			<li class="active yygs"><a href="javascript:;">音乐故事</a></li>
 			<li class="qgyz"><a href="javascript:;">情感驿站</a></li>
@@ -141,10 +308,11 @@
 
 
 	<!-- 优秀电台 -->
+	<div class="m-title">
+		<h2>优秀新电台</h2>
+	</div>
 	<div class="transceiver">
-		<div class="m-title">
-			<h2>优秀新电台</h2>
-		</div>
+		
 		<ul>
 			<li>
 				<a href="javascript:;"><img width="150" height="150" src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt=""></a>
@@ -163,13 +331,13 @@
 			</li>
 			<li>
 				<a href="javascript:;"><img width="150" height="150" src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt=""></a>
-				<h3><a href="javascript:;">你妹电台</a></h3>
+				<h3><a href="javascript:;">刘忻DL组合－铁三角的音乐频道</a></h3>
 				<p>好妹妹乐队是由两个热情洋溢青春青年组成。</p>
 			</li>
 			<li>
 				<a href="javascript:;"><img width="150" height="150" src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt=""></a>
 				<h3><a href="javascript:;">你妹电台</a></h3>
-				<p>好妹妹乐队是由两个热情洋溢青春青年组成。</p>
+				<p>中国男人外表配不上中国女人天涯热帖开始发酵</p>
 			</li>
 		</ul>
 	</div>
@@ -178,29 +346,29 @@
 
 
 	<!-- 最热电台 -->
-	<div class="transceiver transceiver-hot">
-		<div class="m-title">
-			<h2>优秀新电台</h2>
-			<ul class="sort">
-				<li class="active"><a href="javascript:;">上升最快</a></li>
-				<li><a href="javascript:;">最热电台</a></li>
-			</ul>
-		</div>
+	<div class="m-title">
+		<h2>优秀新电台</h2>
+		<ul class="sort">
+			<li class="active"><a href="javascript:;">上升最快</a></li>
+			<li><a href="javascript:;">最热电台</a></li>
+		</ul>
+	</div>
+	<div class="transceiver-hot">		
 		<ul>
 			<li>
 				<a class="pic" href="javascript:;"><img width="150" height="150" src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt=""></a>
 				<div class="text">
-					<h3><a href="javascript:;">你妹电台</a></h3>
+					<h3><a href="javascript:;">你妹电台你妹电台你妹电台你妹电台你妹电台你妹电台你妹电台</a></h3>
 					<p class="author"><span class="u-icon u-icon-author"></span><a href="javascript:;">好妹妹乐队</a><span class="u-icon u-icon-vip"></span></p>
-					<p>共58期  订阅2533次</p>
+					<p class="info"><span>共58期</span>订阅2533次</p>
 				</div>
 			</li>	
 			<li>
 				<a class="pic" href="javascript:;"><img width="150" height="150" src="http://p4.music.126.net/OPFpBvx1dA2vYiVwqgAV9g==/6639950720868734.jpg?param=200y200" alt=""></a>
 				<div class="text">
 					<h3><a href="javascript:;">你妹电台</a></h3>
-					<p class="author"><span class="u-icon u-icon-author"></span><a href="javascript:;">好妹妹乐队</a><span class="u-icon u-icon-vip"></span></p>
-					<p>共58期  订阅2533次</p>
+					<p class="author"><span class="u-icon u-icon-author"></span><a href="javascript:;">好妹妹乐队好妹妹乐队好妹妹乐队好妹妹乐队好妹妹乐队好妹妹乐队好妹妹乐队好妹妹乐队好妹妹乐队</a><span class="u-icon u-icon-vip"></span></p>
+					<p class="info"><span>共58期</span>订阅2533次</p>
 				</div>
 			</li>
 			<li>
@@ -208,7 +376,7 @@
 				<div class="text">
 					<h3><a href="javascript:;">你妹电台</a></h3>
 					<p class="author"><span class="u-icon u-icon-author"></span><a href="javascript:;">好妹妹乐队</a><span class="u-icon u-icon-vip"></span></p>
-					<p>共58期  订阅2533次</p>
+					<p class="info"><span>共58期</span>订阅2533次</p>
 				</div>
 			</li>
 			<li>
@@ -216,7 +384,7 @@
 				<div class="text">
 					<h3><a href="javascript:;">你妹电台</a></h3>
 					<p class="author"><span class="u-icon u-icon-author"></span><a href="javascript:;">好妹妹乐队</a><span class="u-icon u-icon-vip"></span></p>
-					<p>共58期  订阅2533次</p>
+					<p class="info"><span>共58期</span>订阅2533次</p>
 				</div>
 			</li>
 			<li>
@@ -224,7 +392,7 @@
 				<div class="text">
 					<h3><a href="javascript:;">你妹电台</a></h3>
 					<p class="author"><span class="u-icon u-icon-author"></span><a href="javascript:;">好妹妹乐队</a><span class="u-icon u-icon-vip"></span></p>
-					<p>共58期  订阅2533次</p>
+					<p class="info"><span>共58期</span>订阅2533次</p>
 				</div>
 			</li>
 			<li>
@@ -232,7 +400,7 @@
 				<div class="text">
 					<h3><a href="javascript:;">你妹电台</a></h3>
 					<p class="author"><span class="u-icon u-icon-author"></span><a href="javascript:;">好妹妹乐队</a><span class="u-icon u-icon-vip"></span></p>
-					<p>共58期  订阅2533次</p>
+					<p class="info"><span>共58期</span>订阅2533次</p>
 				</div>
 			</li>		
 		</ul>
