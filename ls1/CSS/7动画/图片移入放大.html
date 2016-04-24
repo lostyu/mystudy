@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>图片移入放大</title>
+    <style>
+    	.pic{
+    		width: 225px;
+    		height: 142px;
+    		overflow: hidden;
+    	}
+		.pic img{
+			width: 100%;
+			height: 100%;
+			transition: .5s;
+		}
+		.pic:hover img{
+			transform: scale(1.2);
+		}
+    </style>
+</head>
+<body>
+
+<div class="pic">
+	<img src="http://imgsize.ph.126.net/?enlarge=true&imgurl=http://nos.netease.com/edu-image/6BD5C3FBE9C15EEBF841D6F038C6C3EB.png?imageView&thumbnail=225y142&quality=100_225x142x1x95.png?imageView&thumbnail=225y142&quality=100" alt="">
+</div>
+
+</body>
+</html>
