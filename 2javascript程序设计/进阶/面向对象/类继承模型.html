@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>类继承模型</title>
+    <style>
+        
+    </style>
+    <script>
+  //   	请使用Js代码写出一个类继承的模型，需包含以下实现：
+		// 定义父类和子类，并创建父类和子类的属性和方法
+		// 子类继承父类的属性和方法
+		// 在创建子类对象时，调用父类构造函数
+		// 
+		
+
+		function Parent(name){
+			this.name = name;
+		}
+		Parent.prototype.getName = function(){
+			alert(this.name);
+		}
+
+		function Child(name){
+			Parent.apply(this, arguments);
+		}
+		Child.prototype = new Parent();
+		Child.prototype.constructor = Child;
+		Child.prototype.getName = function(){
+			Parent.prototype.getName.apply(this, arguments);
+		}
+
+		var a = new Parent('Jerry');
+		a.getName();
+
+		var c = new Child('Tony');
+
+		c.getName();
+		
+		console.log(a);
+		console.log(c);
+
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

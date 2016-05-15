@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>节点兼容</title>
+    <style>
+        
+    </style>
+    <script>
+    	window.onload = function(){
+	    	// 如何实现浏览器兼容版的element.children
+			// element.children能够获取元素的元素子节点，但是低版本的ie不支持，如何在低版本的ie上兼容类似的功能。
+
+			function getElementChild(element){
+				if(element.children){
+					return element.children;
+				}				
+						
+				var aNodes = element.childNodes;
+				var result = [];
+
+				for(var i=0;i<aNodes.length;i++){
+					if(aNodes[i].nodeType == 1){
+						result.push(aNodes[i]);
+					}
+				}
+
+				return result;
+			}
+
+			var oDiv = document.getElementById('div1');
+			console.log( getElementChild(oDiv) );
+		}
+    </script>
+</head>
+<body>
+
+<div id="div1">fdsf<span>fdsf</span>fsalfa	<a href="#">fdsffdsfdsfs</a>fjksdjfl</div>
+
+</body>
+</html>

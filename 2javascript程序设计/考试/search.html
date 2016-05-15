@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>search</title>
+    <style>
+        
+    </style>
+    <script>
+    	
+  //   	函数search用于在一个已排序的数字数组中查找指定数字。
+		// 语法如下：
+		// 	var index = search(arr, dst);
+		// 使用范例如下： 
+		// 	var arr = [1, 2, 4, 6, 7, 9, 19,20, 30, 40, 45, 47];
+		// 	search(arr, 45);		返回值： 10
+		// 请写出函数search的实现代码 请给出函数，要求不能使用Array的原型方法，且算法时间复杂度低于O(n)。
+
+
+		// 查找数组中的值的索引，未找到返回-1
+		// function search(arr, val){
+		// 	var result = -1;
+
+		// 	arr.forEach(function(cur, index, array){
+		// 		if(cur === val){
+		// 			result = index;
+		// 		}
+		// 	});
+
+		// 	return result;
+		// }
+
+		function search(arr, val){
+			var result = -1;
+
+			for(var i=0;i<arr.length;i++){
+				if(arr[i] === val){
+					result = i;
+					break;
+				}
+			}
+
+			return result;
+		}
+
+		var arr = [1, 2, 4, 6, 7, 9, 19,20, 30, 40, 45, 47];
+		console.log(search(arr, 40));
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport"
+	content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+	<meta content="black" name="apple-mobile-web-app-status-bar-style">
+	<meta content="telephone=no" name="format-detection">
+	<title>数组去重</title>
+	<style>
+
+	</style>
+	<script>
+		Array.prototype.deleteRepeat = function() {
+			var arr = this,
+				result = [],
+				flag;
+
+			for(var i=0;i<arr.length;i++){
+				flag = true;
+
+				for(var j=0;j<result.length;j++){
+					if(arr[i] === result[j]){
+						flag = false;
+						break;
+					}
+				}
+
+				if(flag){
+					result.push(arr[i]);
+				}
+			}
+
+			return result;
+		};
+
+		console.log( [2,4,2,3,4].deleteRepeat() );
+
+</script>
+</head>
+<body>
+
+
+
+</body>
+</html>

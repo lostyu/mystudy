@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>tab切换</title>
+    <script></script>
+    <style>
+		.tabs{
+			width: 572px;
+			border: 1px solid #999;
+			font: 14px 'Microsoft YaHei';
+		}
+
+		.tabs-hd ul{
+			margin: 0;
+			padding: 0;
+			display: flex;
+		}
+		.tabs-hd li{
+			flex: 1;
+			line-height: 40px;
+			border: 1px solid #cecece;
+			border-width: 0 1px 1px 0;
+			background-color: #f1f1f1;
+			list-style: none;
+			text-align: center;
+			cursor: pointer;
+		}
+		.tabs-hd li:last-child{
+			border-right: none;
+		}
+		.tabs-hd .z-sel{
+			border-bottom: none;
+			background-color: #fff;
+		}
+
+		.tabs-bd{
+			padding: 20px;
+		}
+    </style>
+</head>
+<body>
+
+<div class="tabs">
+	<div class="tabs-hd">
+		<ul>
+			<li>课程</li>
+			<li class="z-sel">学习计划</li>
+			<li>技能图谱</li>
+		</ul>
+	</div>
+	<div class="tabs-bd">
+		学习内容
+	</div>
+</div>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>getElementsByClassName</title>
+    <script>
+    function getByClassName(root, className) {
+        if (root.getElementsByClassName) {
+            return root.getElementsByClassName(className);
+        } else {
+            var aElements = root.getElementsByTagName('*');
+            var aResult = [];
+            var element,
+                classNameStr,
+                flag;
+            className = className.split(' ');
+
+            // 去除数组中为空的值['', '', '', 'user'] => ['user']
+            for (var i = className.length - 1; i >= 0; i--) {
+                if (className[i] == '') {
+                    className.splice(i, 1);
+                }
+            }
+
+            for (var i = 0; element = aElements[i]; i++) {
+                classNameStr = element.className;
+                flag = true;
+
+                for (var j = 0, name; name = className[j]; j++) {
+                    if (classNameStr.indexOf(name) == -1) {
+                        flag = false;
+                        break;
+                    }
+                }
+                if (flag) {
+                    aResult.push(element);
+                }
+            }
+
+            return aResult;
+
+        }
+    }
+
+    window.onload = function() {
+
+        var oDiv = document.getElementById('div1');
+        console.log(getByClassName(oDiv, '   user    user2'));
+        console.log(getByClassName(oDiv, 'user  '));
+
+        // var str = 'class1 type    active';
+        // console.log(str.split(' '));
+        // var element,
+        // 	elements = oDiv.getElementsByTagName('*');
+        // for(var i=0; element = elements[i]; i++){
+        // 	console.log(element);
+        // }
+    };
+    </script>
+</head>
+
+<body>
+    <div id="div1">
+        <p class="user"></p>
+        <p class="user"></p>
+        <p class="user user2"></p>
+    </div>
+</body>
+
+</html>

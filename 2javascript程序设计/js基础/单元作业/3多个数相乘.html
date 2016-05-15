@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>多个数相乘</title>
+    <style>
+        
+    </style>
+    <script>
+        function multiply() {
+            var result = 1;
+
+
+            if(arguments.length > 1){
+                for(var i=0;i<arguments.length;i++){
+                    result *= arguments[i];
+                }
+            }else{  // 只有一个参数返回参数本身
+                return arguments[0];
+            }
+        	
+
+        	return result;
+        }
+
+        var product = multiply(5);
+        var product = multiply(1, 2, 3, 4, 5);
+
+		console.log(product);
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

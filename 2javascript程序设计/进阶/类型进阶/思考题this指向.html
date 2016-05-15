@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>this指向</title>
+    <style>
+        
+    </style>
+    <script>
+    	
+        // 1、改变this指向
+    	// var myNumber = {
+    	// 	value: 1,
+    	// 	add: function(i) {
+    	// 		var _this = this;
+    	// 		var helper = function(i) {
+    	// 			console.log(this);	// window
+    	// 			_this.value += i;
+    	// 		};
+    	// 		helper(i);
+    	// 	}
+    	// };
+
+    	// myNumber.add(1);
+    	// console.log(myNumber);
+        
+
+        // 2、apply，call
+        // var myNumber = {
+        //     value: 1,
+        //     add: function(i) {
+        //         var helper = function(i) {
+        //             console.log(this);  // myNumber
+        //             this.value += i;
+        //         };
+        //         // helper.apply(this, [i]);
+        //         helper.call(this, i);
+        //     }
+        // };
+
+        // myNumber.add(1);
+        // console.log(myNumber); 
+
+        // 3、bind
+        var myNumber = {
+            value: 1,
+            add: function(i) {
+                var helper = function(i) {
+                    console.log(this);  // myNumber
+                    this.value += i;
+                };
+                var helper2 = helper.bind(this);
+                helper2(i);
+            }
+        };
+
+        myNumber.add(10);
+        console.log(myNumber); 
+
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

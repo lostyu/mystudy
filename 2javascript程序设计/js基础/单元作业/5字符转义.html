@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>字符转义</title>
+    <style>
+        
+    </style>
+    <script>
+    	// 函数escapeHTML用于转义html字符串中的特殊字符(<>"&)。replace
+    	
+        function escapeHTML(htmlStr){
+        	return htmlStr.replace(/[<>\&"]/g, function(word) {
+        		switch(word){
+        			case '<':
+        				return '&lt;';
+        				break;
+        			case '>':
+        				return '&gt;';
+        				break;
+        			case '&':
+        				return '&amp;';
+        				break;
+        			case '"':
+        				return '&quot;';
+        				break;
+        		}
+        	});
+        } 
+        console.log('<div>Tom&Jerry</div>');
+        console.log( escapeHTML('<div>Tom&Jerry</div>') );
+        console.log('<input type="text" name="mobile">');
+        console.log( escapeHTML('<input type="text" name="mobile">') );
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

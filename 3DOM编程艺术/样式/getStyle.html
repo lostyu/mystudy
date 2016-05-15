@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>getStyle</title>
+    <style>
+		div{
+			color: black;
+		}
+    </style>
+    <script>
+    	
+    	var oDiv;
+		window.onload = function(){
+			oDiv = document.getElementById('div1');
+
+			var c = getStyle(oDiv, 'color');
+			console.log(c);
+
+			function getStyle(element, cssPropertyName){
+				if(window.getComputedStyle){
+					return window.getComputedStyle(element, false)[cssPropertyName];
+				}else{
+					return element.currentStyle[cssPropertyName];
+				}
+			}
+		}
+
+    </script>
+</head>
+<body>
+
+<div id="div1" style="color: red;">fdsf</div>
+
+</body>
+</html>

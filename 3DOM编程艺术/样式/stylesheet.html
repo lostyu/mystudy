@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>stylesheet</title>
+    <link rel="stylesheet" href="base.css">
+    <style>
+        p{
+        	color: black;
+        }
+    </style>
+    <script>
+    	
+    window.onload = function(){
+    	var link = document.getElementsByTagName('link')[0];
+
+    	// console.log(link.sheet.cssRules{body:'color:black;'});
+    	console.log( document.styleSheets );
+    };
+
+    </script>
+</head>
+<body>
+
+<p>fsdfs</p>
+
+</body>
+</html>

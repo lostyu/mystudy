@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>解析url</title>
+    <style>
+        
+    </style>
+    <script>
+    	
+  //   	函数parseQuery用于解析url查询参数。
+		// 语法如下：
+		// 	var obj = parseQuery(query)
+		// 	query是被解析的查询参数，函数返回解析后的对象。
+		// 使用范例如下：
+		// 	var jerry = parseQuery("name=jerry&age=1");
+		// 	jerry; 	返回值：{name: " jerry ", age: "1"}
+		// 	var tom = parseQuery("name= tom &age=12&gender&");
+		// 	tom; 	返回值：{name: "tom", age: "12", gender: ""}
+		// 请写出函数parseQuery的实现代码。
+
+
+		function parseQuery(query) {
+
+			if(query){
+				// 通过&拆分字符串为数组 ["name=tom", "age=12", "gender", ""]
+				var arrResult = query.split('&');	
+				var obj = {};
+				
+				for(var i=0;i<arrResult.length;i++){
+					// 排除空字符 ["name=tom", "age=12", "gender"]
+					if(arrResult[i]){	
+						// 排除没有"="号的 ["name=tom", "age=12"]
+						if(arrResult[i].search('=') != -1){	
+							var arr = arrResult[i].split('=');
+							obj[arr[0]] = arr[1];
+						}else{
+							// 只有键的
+							obj[arrResult[i]] = '';
+						}
+					}
+				}
+
+				return obj;
+			}
+			
+		}
+
+		var jerry = parseQuery("name=jerry&age=1");
+		var tom = parseQuery("name= tom &age=12&gender&");
+
+		console.log(jerry);
+		console.log(tom);
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

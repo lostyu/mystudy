@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>dataset</title>
+    <style>
+        
+    </style>
+    <script>
+    	var	ds;
+    	window.onload = function(){
+    		var oDiv = document.getElementById('div1');
+
+			function dataset(element){
+				if(element.dataset){
+					return element.dataset;
+				}else{
+					var oResult = {},
+						attrs = element.attributes,
+						name, key;
+
+					for(var i=0;i<attrs.length;i++){
+						name = attrs[i].name;
+						if(name.indexOf('data-') != -1){
+							key = name.substring(5);
+							key = key.replace(/-\w/g,function(match){
+								return match.substring(1).toUpperCase();					
+							});
+							oResult[key] = attrs[i].value;
+						}
+					}
+
+					return oResult;
+				}
+			}
+
+			ds = dataset(oDiv);
+    	};
+    </script>
+</head>
+<body>
+
+<div id="div1" data-id="12323" data-name="Tony" data-class-name="8" data-my-first-name="yu" data-my-1-test-haha="tks"></div>
+
+</body>
+</html>

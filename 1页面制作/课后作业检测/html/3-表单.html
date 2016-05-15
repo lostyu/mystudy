@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>表单</title>
+    <style>
+		/* 页面简单重置 */
+		*{margin:0;padding:0;}
+		li{list-style: none;}
+
+
+
+		.form{
+			width: 400px;
+			margin: 50px auto 0;
+		}
+		.form input[type=text]{
+			line-height: 30px;
+		}
+		.form textarea{
+			width: 100%;
+		}
+		.form [type=submit]{
+			padding: 15px 40px;
+			border: none;
+			background: #D853B7;
+			color: #fff;
+			font-size: 16px;
+			font-weight: bold;
+		}
+		.formItem{
+			line-height: 30px;
+			margin-bottom: 20px;
+		}
+		.formTitle{
+			float: left;
+			width: 60px;
+		}
+		.formInput{
+			margin-left: 60px;
+		}
+
+    </style>
+</head>
+<body>
+
+<form class="form" action="" method="post">
+
+	<div class="formItem">
+		<label class="formTitle">
+			头像
+		</label>
+		<div class="formInput">
+			<input type="file">
+		</div>
+	</div>
+
+	<div class="formItem">
+		<label class="formTitle">
+			昵称
+		</label>
+		<div class="formInput">
+			<input type="text">
+		</div>
+	</div>
+
+	<div class="formItem">
+		<label class="formTitle">
+			学历
+		</label>
+		<div class="formInput">			
+			<select name="" id="">
+				<option value="0">大专</option>
+				<option value="1">本科</option>
+			</select>
+		</div>
+	</div>
+
+	<div class="formItem">
+		<label class="formTitle">
+			性别
+		</label>
+		<div class="formInput">
+			<label><input type="radio" name="sex" checked> 男</label>
+			<label><input type="radio" name="sex"> 女</label>
+		</div>
+	</div>
+
+	<div class="formItem">
+		<label class="formTitle">
+			爱好
+		</label>
+		<div class="formInput">
+			<label><input type="checkbox" name="hobby" checked> 电影</label>
+			<label><input type="checkbox" name="hobby"> 摄影</label>
+			<label><input type="checkbox" name="hobby"> 音乐</label>
+			<label><input type="checkbox" name="hobby" checked> 阅读</label>
+		</div>
+	</div>
+
+	<div class="formItem">
+		<label class="formTitle">
+			签名
+		</label>
+		<div class="formInput">
+			<textarea rows="5"></textarea>
+		</div>
+	</div>
+
+	<div class="formItem">
+		<div class="formInput">
+			<button type="submit">保存</button>
+		</div>
+	</div>
+
+	
+</form>
+
+</body>
+</html>

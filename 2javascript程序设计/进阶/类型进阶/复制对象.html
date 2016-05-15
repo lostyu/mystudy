@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>复制对象</title>
+    <style>
+        
+    </style>
+    <script>
+    	
+		// 深拷贝
+		function deepClone(obj){
+			if(typeof obj != 'object'){
+				return obj;
+			}
+
+			var newObj = new Object();
+			for(var key in obj){
+				if(obj.hasOwnProperty(key)){
+					newObj[key] = deepClone(obj[key]);
+				}
+			}
+
+			return newObj;
+		}
+
+		var aaa = {
+			name: 'Tony',
+			age: 18,
+			sayHi: function() {
+				alert('My name is ' + this.name + ', age '+ this.age);
+			}
+		};
+
+		var bbb = deepClone(aaa);
+    	bbb.name = 'jerry';    	
+    	// bbb.sayHi();
+    	bbb.arr[0] = 'haha';
+
+    	console.log(aaa);
+    	console.log(bbb);
+
+    	console.log(typeof aaa.arr);
+    	console.log(typeof bbb.arr);
+
+
+
+  //   	function clone(target, source) {
+		//     for (var p in source) {
+		//         if (source.hasOwnProperty(p)) {
+		//             target[p] = source[p];
+		//         }
+		//     }
+		    
+		//     return target;
+		// };
+
+		// var bbb = {};
+		// clone(bbb,aaa);
+		// bbb.name = 'jerry';
+
+		// console.log(bbb);
+
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

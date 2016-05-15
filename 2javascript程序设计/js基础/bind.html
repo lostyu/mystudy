@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>bind</title>
+    <style>
+        
+    </style>
+    <script>
+    	
+	if(!Function.prototype.bind){
+		Function.prototype.bind = function(context){
+			var args = arguments,
+				obj = arguments[0],
+				func = this;
+
+			return function(){
+				var argc = Array.prototype.slice.call(args, 1);
+				Array.prototype.push.apply(argc, arguments);
+				return func.apply(obj||null, argc);
+			}
+
+		};
+	}
+
+    function move(x, y) {
+	    this.x += x;
+	    this.y += y;
+	}
+	var point = {x:1, y:2};
+	var pointmove = move.bind(point, 2, 2);
+	pointmove();
+	console.log(point);
+
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>
