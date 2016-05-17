@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>drag</title>
+    <style>
+        div{
+        	position: absolute;
+        	width: 100px;
+        	height: 100px;
+        	background-color: black;
+        }
+    </style>
+    <script>
+    	
+    	window.onload = function(){
+    		var oDiv = document.getElementById('div1');
+    		var clientX, clientY, moveing;
+
+    		var mouseDownHandler = function(ev){
+    			ev = ev || window.event;
+    			clientX = ev.clientX;
+    			clientY = ev.clientY;
+    			moveing = true;
+    		}
+    		var mouseMoveHandler = function(ev){
+    			if(!moveing){
+    				return;
+    			}
+    			ev = ev || window.event;
+    			var newClientX = ev.clientX;
+    			var newClientY = ev.clientY;
+    			var left = parseInt(oDiv.style.left) || 0;
+    			var top = parseInt(oDiv.style.top) || 0;
+
+    			oDiv.style.left = left + (newClientX - clientX) + 'px';
+    			oDiv.style.top = top + (newClientY -clientY) + 'px';
+    			clientX = newClientX;
+    			clientY = newClientY;
+    		}
+    		var mouseUpHandler = function(){
+    			moveing = false;
+    		}
+
+    		oDiv.addEventListener('mousedown',mouseDownHandler,false);
+    		oDiv.addEventListener('mousemove',mouseMoveHandler,false);
+    		oDiv.addEventListener('mouseup',mouseUpHandler,false);
+    	};
+
+
+
+    </script>
+</head>
+<body>
+
+<div id="div1"></div>
+
+</body>
+</html>
