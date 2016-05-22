@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>get</title>
+    <style>
+        
+    </style>
+    <script>
+    	
+  //   	方法
+		// get(url, options, callback)
+		// 参数
+		// url    {String}    请求资源的url
+		// options    {Object}    请求的查询参数
+		// callback    {Function}    请求的回调函数，接收XMLHttpRequest对象的responseText属性作为参数
+		// 返回
+		// void
+		// 举例
+		// get(‘/information’, {name: ‘netease’, age: 18}, function (data) {
+		// 	console.log(data);
+		// });
+		// 描述
+		// 方法get(url, options, callback) 是对Ajax请求GET方法的封装。请写出get方法的实现代码。
+
+		/**
+		 * ajax get
+		 * @param  {[string]}   url      [请求资源的url]
+		 * @param  {[object]}   options  [请求的查询参数]
+		 * @param  {Function} 	callback [请求的回调函数，接收XMLHttpRequest对象的responseText属性作为参数]
+		 * @return {[void]}            
+		 */
+		function get(url, options, callback){
+			var xhr;
+
+			if(window.XMLHttpRequest){
+				xhr = new window.XMLHttpRequest();
+			}
+
+			xhr.open(url, options);
+			xhr.send();
+			xhr.onstatusready = function(){
+				
+			}
+			
+		}
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

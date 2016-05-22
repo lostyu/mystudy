@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>cascade</title>
+    <style>
+
+    </style>
+    <script>
+    var data = [
+    	
+    	    {
+    	        text:'第一级',
+    	        value:'1',
+    	        list:[
+    	            {
+    	                text:'第二级',
+    	                value:'1.1',
+    	                list:[
+    	                    {
+    	                        text:'第三级',
+    	                        value:'1.1.1',
+    	                        list:[]
+    	                    },
+    	                    
+    	                ]
+    	            },
+    	            {
+    	                text:'第二级2',
+    	                value:'1.2',
+    	                list:[]
+    	            }
+    	            
+    	        ]
+    	    }
+    	    
+    	
+    ];
+    // 这里selectList为依次级联的选择器元素列表，如[select1,select2,select3,...]
+    // TODO
+    function cascade(selectList, data) {
+
+    	var len = selectList.length;
+
+    	// 绑定onchang事件
+        for(var i=0;i<len-1;i++){
+
+			selectList[i].index = i;
+        	selectList[i].onchange = function(ev){        		
+
+        		var select,
+        			dataTemp = data,
+        			reset = false;
+
+        		for(var i=0; i<len-1; i++){
+        			select = selectList[i];
+        			dataTemp = dataTemp[select.selectedIndex - 1].list || [];
+    				
+    				if(select === this){
+    					i++;
+    					fillSelect(selectList[i], dataTemp);
+    					reset = true;
+    					i++;
+    				}
+        		}
+        		
+        		// var select, dataTemp = data, reset=false; //reset用来判断是否要重置后面的select
+          //        //循环遍历每一个select直到当前的select，以计算data
+          //        for(var j=0; j<=len-1; j++){
+          //            select = selectList[j];
+          //            dataTemp = dataTemp[select.selectedIndex - 1].list;
+ 
+          //            if(select === this){ //循环到当前触发事件的select时，停止计算data，并填充后面的一个select
+          //                j += 1;
+          //                fillSelect(selectList[j], dataTemp);
+          //                reset = true; //标记开始重置
+          //                j += 1; //待重置的第一个select索引
+          //            }
+          //            if(reset && j<len){
+          //                fillSelect(selectList[j], []);//重置
+          //            }
+          //        }
+
+        	};
+        }
+
+    	// 填充数据
+        function fillSelect(select, list) {
+            for (var i = select.length - 1; i > 0; i--) {
+                select.remove(i);
+            }
+
+            list.forEach(function(data){
+            	var option = new Option(data.text, data.value);
+            	select.add(option);
+            });
+        }
+        
+
+        // 获取要填充的数据
+        function getData(index, data){
+        	for(var i=0;i<index;i++){
+				console.log(selectList[i]);
+        	}
+        	
+		}
+
+        fillSelect(selectList[0], data);
+    }
+
+    window.onload = function() {
+        var oSel1 = document.getElementById('se1');
+        var oSel2 = document.getElementById('se2');
+        var oSel3 = document.getElementById('se3');
+        var selectList = [];
+        selectList.push(oSel1, oSel2, oSel3);
+
+        cascade(selectList, data);
+    };
+    </script>
+</head>
+
+<body>
+    <select id="se1">
+        <option value="0">请选择</option>
+    </select>
+    <select id="se2">
+    	<option value="0">请选择</option>
+    </select>
+    <select id="se3">
+    	<option value="0">请选择</option>
+    </select>
+</body>
+
+</html>

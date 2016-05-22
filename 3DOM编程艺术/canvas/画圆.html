@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>画圆</title>
+    <style>
+        
+    </style>
+	<script>
+		window.onload = function(){
+			var oCanvas = document.getElementById('myCanvas');
+			var ctx = oCanvas.getContext('2d');
+
+			ctx.beginPath();
+			ctx.arc(150,150,100,0,2*Math.PI);
+			ctx.strokeStyle='#4d4e53';
+			ctx.stroke();
+			ctx.fillStyle='#6a83ff';
+			ctx.fill();
+		};
+	</script>
+</head>
+<body>
+
+<canvas id="myCanvas" width="300" height="300"></canvas>
+
+</body>
+</html>
