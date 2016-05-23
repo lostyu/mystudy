@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>登录</title>
+    <style>
+    .m-login {
+        position: absolute;
+        left: 50%;
+        top: 100px;
+        width: 400px;
+        margin-left: -200px;
+        border: 1px solid #000;
+    }
+    
+    .m-login .hd {
+        height: 40px;
+        line-height: 40px;
+        background-color: #333;
+    }
+    
+    .m-login .hd h2 {
+        margin: 0;
+        padding: 0 10px;
+        color: #fff;
+        font-size: 16px;
+        font-weight: normal;
+    }
+    
+    .m-login .bd {
+        padding: 20px;
+    }
+    
+    .m-login .m-form {
+        width: 250px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .m-login .loginBtn {
+        display: block;
+        width: 100%;
+        line-height: 35px;
+        border: none;
+        background-color: #2A7BC8;
+        color: #fff;
+        text-align: center;
+    }
+    
+    .m-login .loginBtn:hover {
+        background-color: #116ABE;
+    }
+    
+    .m-login .msg {
+        visibility: hidden;
+        height: 18px;
+        margin-bottom: 20px;
+    }
+    
+    .m-login .j-err {
+        visibility: visible;
+        color: red;
+    }
+    
+    .m-login .j-suc {
+        visibility: visible;
+        color: green;
+    }
+    
+    .m-login .j-error {
+        border-color: red;
+    }
+    
+    .m-login .j-disabled,
+    .m-login .j-disabled:hover {
+        background-color: #ddd;
+    }
+    
+    .m-form legend {
+        display: none;
+    }
+    
+    .m-form fieldset {
+        margin: 0;
+        padding: 0;
+        border: none;
+    }
+    
+    .m-formgroup {
+        margin-bottom: 20px;
+    }
+    
+    .u-ipt {
+        box-sizing: border-box;
+        display: block;
+        width: 100%;
+        padding: 6px 12px;
+        height: 35px;
+        line-height: 35px;
+        border: 1px solid #ccc;
+    }
+    </style>
+    <script src="webtoolkit.md5.js"></script>
+    <script>
+    window.onload = function() {
+        var oForm = document.forms.loginForm;
+        var oTel = oForm.tel;
+        var oPass = oForm.password;
+        var oLoginBtn = oForm.loginBtn;
+        var oMsg = document.getElementById('message');
+        var oIframe = document.getElementById('result');
+        // 提示信息
+        function showMessage(clazz, msg) {
+            if (!clazz) {
+                oMsg.innerHTML = '';
+                oMsg.classList.remove('j-suc');
+                oMsg.classList.remove('j-err');
+            } else {
+                oMsg.innerHTML = msg;
+                oMsg.classList.add(clazz);
+            }
+        }
+        // input未通过验证
+        function invalidInput(node, msg) {
+            // showMessage('j-err', msg);
+            node.classList.add('j-error');
+        }
+        // 清除验证状态
+        function clearInvalid(node) {
+            // showMessage();
+            node.classList.remove('j-error');
+        }
+        // 登录按钮禁用状态切换
+        function disabledSubmit(disabled) {
+            oLoginBtn.disabled = !!disabled;
+            var method = !disabled ? 'remove' : 'add';
+            oLoginBtn.classList[method]('j-disabled');
+        }
+        // 手机号码验证
+        function checkTel() {
+            var telVal = oTel.value;
+            var regTel = /^1\d{10}$/;
+
+            if (!regTel.test(telVal)) {
+                return '手机号码格式错误2!';
+            }
+            return true;
+        }
+        // 密码验证
+        function checkPass() {
+            var passVal = oPass.value;
+
+            if (passVal.length < 6) {
+                return '密码不少于6位!';
+            } else if (passVal.length > 16) {
+                return '密码不大于16位!';
+            } else if (!/\d/.test(passVal) || !/[a-z]/i.test(passVal)) {
+                return '密码必须包含数字和字母!';
+            }
+            return true;
+        }
+        function checkForm() {
+            var result = '';
+            result = checkTel();
+            if (typeof result === 'string') {
+                invalidInput(oTel, result);
+                showMessage('j-err', result);
+                return false;
+            }
+            result = checkPass();
+            if (typeof result === 'string') {
+                invalidInput(oPass, result);
+                showMessage('j-err', result);
+                return false;
+            }
+            showMessage();
+            return true;
+        }
+        oTel.addEventListener('focus', function(event) {
+            clearInvalid(oTel);
+        });
+        oPass.addEventListener('focus', function(event) {
+            clearInvalid(oPass);
+        });
+        oTel.addEventListener('blur', function(event) {
+            checkForm();
+        });
+        oPass.addEventListener('blur', function(event) {
+            checkForm();
+        });
+        oForm.addEventListener('submit', function() {
+            if (!checkForm()) {
+                return;
+            }
+
+            oPass.value = MD5(oPass.value);
+            disabledSubmit(true);
+
+        }, false);
+        oIframe.addEventListener('load', function() {
+            try {
+                var result = JSON.parse(oIframe.contentWindow.document.body.textContent);
+
+                console.log(111);
+                disabledSubmit(false);
+
+                if (result.code == 200) {
+                    showMessage('j-suc', '登录成功！');
+                    oForm.reset();
+                }
+            } catch (ex) {
+                console.log(ex);
+            }
+        });
+    };
+    </script>
+</head>
+
+<body>
+    <div class="m-login">
+        <div class="hd">
+            <h2>手机号登录</h2>
+        </div>
+        <div class="bd">
+            <iframe id="result" name="result" style="display:none;"></iframe>
+            <form class="m-form" action="http://study.163.com/webDev/login.htm" name="loginForm" target="result" autocomplete="off">
+                <legend>手机号码登录</legend>
+                <fieldset>
+                    <div class="msg" id="message">fdsf</div>
+                    <div class="m-formgroup">
+                        <input class="u-ipt" type="tel" name="tel">
+                    </div>
+                    <div class="m-formgroup">
+                        <input class="u-ipt" type="password" name="password">
+                    </div>
+                    <div class="m-formgroup">
+                        <button name="loginBtn" class="loginBtn">登　录</button>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>
