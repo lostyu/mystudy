@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>cookies</title>
+    <script>
+    	// 函数getCookies()解析document.cookie， 并返回一个对象，    该对象的属性名为cookie的name，属性值为cookie的value。请写出该函数的实现代码
+
+		function getCookies(){
+			var obj = {};
+			var aTemp = document.cookie.split(';');
+
+			for(var i=0;i<aTemp.length;i++){
+				var _temp = aTemp[i].split('=');				
+				obj[_temp[0]] = _temp[1];
+			}
+			
+			return obj;
+		}
+
+		var ck = getCookies();
+
+    	console.log(ck);
+    </script>
+</head>
+<body>
+
+
+
+</body>
+</html>

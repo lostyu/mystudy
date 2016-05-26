@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>getElementsByClass</title>
+    <script>
+		function getElementsByClassName(element, names){
+			if(document.getElementsByClassName){
+				return element.getElementsByClassName(names);
+			}else{
+				var aElements = element.getElementsByTagName('*');
+				var aNames = names.split(' ');	// 获取所有className['aaa', 'bb', '', '', 'dd'](包括空)
+				var element, aClassName, flag, aResult = [];
+
+				for(var i=0, element; element=aElements[i] ;i++){
+					aClassName = element.className;
+					flag = true;
+					
+					for(var j=0; j<aNames.length; j++){
+						var reg = new RegExp("\\b"+ aNames[j] +"\\b");	// 正则匹配已单词为划分
+						if(reg.test(aClassName) == false){
+							flag = false;
+							break;
+						}
+					}
+
+					if(flag){
+						aResult.push(element);
+					}
+				}
+
+				return aResult;
+			}
+		}
+
+    	window.onload = function(){
+    		var oDiv = document.getElementById('div1');
+    		var elements = getElementsByClassName(oDiv, 'aaa');
+
+    		console.log(elements);
+    	};
+
+    </script>
+</head>
+<body>
+
+<div id="div1">
+	<p class="aaa">aaa</p>
+	<p class="aaa bbb">aaa bbb</p>
+	<p class="ccc bbb">ccc</p>
+</div>
+
+</body>
+</html>

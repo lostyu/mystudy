@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>fadeout</title>
+    <script>
+    	//函数fadeout(element)实现了元素的淡出效果（即透明度从1变到0），动画时间为1秒钟。用定时器setInterval实现动画，写出函数fadeout的实现代码：
+
+// 兼容获取style
+function getStyle(element, attr){
+	if(window.getComputedStyle){
+		return window.getComputedStyle(element, null)[attr];
+	}else{
+		return element.currentStyle[attr];	
+	}
+}
+
+function fadeout(element){
+	var target = 0;
+	var speed = Math.floor(100 / 6);
+	
+	clearInterval(element.timer);
+	element.timer = setInterval(function(){
+		
+		var cur = getStyle(element, 'opacity') * 100 - speed;
+	
+		element.style.opacity = cur/100;
+
+		if(cur <= target){
+			clearInterval(element.timer);
+			element.style.opacity = 0;
+		}
+		
+	}, 1000);
+}
+
+window.onload = function(){
+	var oDiv = document.getElementById('div1');
+
+	fadeout(oDiv);
+};
+    </script>
+</head>
+<body>
+<!-- ie上不设置opacity，获取不到值 -->
+<div id="div1" style="width: 100px; height: 100px; background-color: red; opacity: 1;"></div>
+
+
+</body>
+</html>
