@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>grid-全屏布局</title>
+    <script></script>
+    <style>
+		*{margin: 0; padding: 0;}
+
+		html, body, .parent{ height: 100%; overflow: hidden;}
+		.parent{    		
+			display: grid;    		
+			grid-template-rows: 100px 1fr 100px;		
+			grid-template-columns: 200px 1fr;			
+			grid-template-areas: "hd hd"
+					   			 "side main"
+				       			 "ft ft";
+		}
+
+		.parent .hd{
+			grid-area: hd;
+			background-color: #ddd;
+		}
+		.parent .side{
+			grid-area: side;
+			background-color: #eee;
+		}
+		.parent .main{
+			grid-area: main;
+			overflow: auto;
+			background-color: #aaa;
+		}
+		.parent .main .inner{
+			min-height: 1000px;
+		}
+		.parent .ft{
+			grid-area: ft;
+			background-color: #ccc;
+		}
+
+
+
+    </style>
+</head>
+<body>
+
+<div class="parent">
+	<div class="hd">heade</div>
+	<div class="side">side</div>
+	<div class="main">
+		<div class="inner">main</div>
+	</div>	
+	<div class="ft">footer</div>
+</div>
+
+</body>
+</html>

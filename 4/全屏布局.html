@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>全屏布局</title>
+    <style>
+    	*{margin: 0; padding:0;}
+    	html, body, .parent{
+    		height:100%;
+    		overflow:hidden;
+    	}
+    	.parent .hd{
+    		position: absolute;
+    		top: 0;
+    		left: 0;
+    		right: 0;
+    		height: 100px;
+    		background-color:#ddd;
+    	}
+    	.parent .ft{
+    		position: absolute;
+    		left: 0;
+    		right: 0;    		
+    		bottom: 0;
+    		height: 100px;
+    		background-color:#aaa;
+    	}
+    	.parent .main{
+    		overflow: auto;
+    		position: absolute;
+    		left: 200px;
+    		right: 0;
+    		top: 100px;
+    		bottom: 100px;
+    		background-color:#eee;
+    	}
+    	.parent .main .inner{
+    		min-height: 1000px;
+    	}
+    	.parent .side{
+    		position: absolute;
+    		left: 0;
+    		top: 100px;
+    		bottom: 100px;
+    		width: 200px;
+    		background-color:#ccc;
+    	}
+    </style>
+</head>
+<body>
+
+<div class="parent">
+	<div class="hd">header</div>
+	<div class="main">
+		<div class="inner"></div>
+	</div>
+	<div class="side">side</div>	
+	<div class="ft">footer</div>
+</div>
+
+</body>
+</html>
