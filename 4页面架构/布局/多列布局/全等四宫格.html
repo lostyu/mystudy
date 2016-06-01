@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>全等四宫格</title>
+    <script></script>
+    <style>
+		*{margin:0;padding:0;}
+		.parent{width: 400px; height: 400px;}
+		.column{background-color: #099;}
+
+		/*1.flex 最外层容器不定宽高，结构可以划分为两行两列*/
+		.parent{ display: flex; flex-flow: column; width: 400px; height: 400px;}
+		.rows{ flex: 1; display: flex; flex-flow: row; }
+		.rows+.rows{margin-top: 10px;}
+		.column{flex: 1;}
+		.column+.column{margin-left: 10px;}
+
+		/*2.float*/
+		.parent{
+			margin: -10px 0 0 -10px;
+		}
+		.column{
+			float: left;
+			width: 50%;
+			height: 50%;
+			padding: 10px 0 0 10px;
+			box-sizing: border-box;
+			background-clip: content-box;
+		}
+
+		/*3.table*/
+		.parent{
+			display: table;
+			table-layout: fixed;
+			margin: -10px 0 0 -10px;
+		}
+		.rows{display: table-row;}
+		.column{
+			display: table-cell; 
+			border: 10px solid transparent;
+			border-width: 10px 0 0 10px;
+			background-clip: padding-box;
+		}
+    </style>
+</head>
+<body>
+
+<!-- 1 -->
+<!-- <div class="parent">
+	<div class="rows">
+		<div class="column"></div>
+		<div class="column"></div>
+	</div>
+	<div class="rows">
+		<div class="column"></div>
+		<div class="column"></div>
+	</div>
+</div> -->
+
+<!-- 2 -->
+<!-- <div class="parent">
+	<div class="column"></div>
+	<div class="column"></div>
+	<div class="column"></div>
+	<div class="column"></div>
+</div> -->
+
+
+<!-- 3 -->
+<div class="parent">
+	<div class="rows">
+		<div class="column"></div>
+		<div class="column"></div>
+	</div>
+	<div class="rows">
+		<div class="column"></div>
+		<div class="column"></div>
+	</div>
+</div>
+
+</body>
+</html>

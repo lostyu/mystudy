@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>水平列表的底部对齐</title>
+    <style>
+    	
+		ul{margin: 0;padding: 0;}
+		li{list-style: none; width: 50px;}
+		.blue{background-color: blue;}
+		.red{background-color: red;}
+		.green{background-color: green;}
+		.pink{background-color: pink;}
+
+		/* 1.flex + align-items 高版本浏览器兼容*/
+		ul{display: flex; align-items: flex-end;}
+
+		/* 2.table-cell + inline-block + vertical-align + font-size(消除子元素之间空隙) 兼容性较好*/
+		ul{display: table-cell; font-size: 0;}
+		li{display: inline-block; font-size: 14px;vertical-align: bottom;}
+
+		/* 3. absolute 父容器的高度必须指定*/
+		ul{position: relative; min-height: 300px;}
+		li{position: absolute; bottom: 0;}
+		.red{left: 50px;}
+		.green{left: 100px;}
+		.pink{left: 150px;}
+    </style>
+</head>
+<body>
+
+<ul>
+	<li class="blue"><div style="height:100px;">111</div></li>
+	<li class="red"><div style="height:150px;">222</div></li>
+	<li class="green"><div style="height:200px;">333</div></li>
+	<li class="pink"><div style="height:120px;">444</div></li>
+</ul>
+
+</body>
+</html>

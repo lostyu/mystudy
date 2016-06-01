@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>水平垂直居中解决方案</title>
+    <script></script>
+    <style type="text/css">
+        
+    /* 1.inline-block + text-align + table-cell + vertical-align */
+    .parent{display: table-cell;vertical-align: middle;text-align: center;}
+    .child{display: inline-block;}
+    
+    /*2.absolute + transform*/
+    .parent{position: relative;}
+    .child{position: absolute;top: 50%;left: 50%;transform: translate(-50%,-50%);}
+
+    /*3.flex + justify-content + align-items*/
+    .parent{display: flex; justify-content: center; align-items: center;}
+    </style>
+</head>
+
+<body>
+    
+    <!-- 1.inline-block + text-align + table-cell + vertical-align -->
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+    
+    <!-- 2.absolute + transform -->
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+
+    <!-- 3.flex + justify-content + align-items -->
+    <div class="parent">
+        <div class="child"></div>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>幻灯片</title>
+    <script></script>
+    <style>
+    /*要求如下：幻灯（slide）宽高未知，指示器（pointer）在底部且水平居中，距离底部10px，指示器中的圆直径为10px，个数未知，背景为黑色，间距为5px，请完成CSS。*/
+    
+	.slide {
+	    position: relative;
+	    width: 400px;
+	    height: 200px;
+	    background-color: #9dc3e6;
+	}
+
+	.slide .pointer {
+	    position: absolute;
+	    bottom: 10px;
+	    left: 50%;
+	    transform: translateX(-50%);
+	    font-size: 0;	/*去除圆点的间隙*/
+	}
+
+	.slide .pointer i {
+	    display: inline-block;
+	    width: 10px;
+	    height: 10px;
+	    margin:0 5px;
+	    border-radius: 10px;
+	    background-color: #000;
+	    cursor: pointer;
+	}
+    </style>
+</head>
+
+<body>
+    <div class="slide">
+        <!-- 图片省略 -->
+        <!-- 以下是指示器 -->
+        <div class="pointer"><i></i><i></i><i></i></div>
+    </div>
+</body>
+
+</html>

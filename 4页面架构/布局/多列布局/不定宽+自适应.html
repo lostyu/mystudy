@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>不定宽+自适应</title>
+    <script></script>
+    <style>
+    	*{margin: 0; padding: 0;}
+    	.left{background-color: #333;}
+    	.right{background-color: #999;}
+
+    	/*1.float + overflow (ie6有兼容性问题)*/
+    	/*.left{
+    		float: left;
+			margin-right: 20px;
+    	}
+    	.right{
+    		overflow: hidden;
+    	}*/
+
+
+    	/*2.table (ie6,7有兼容性问题)*/
+    	/*.parent{
+    		display: table;
+    		width: 100%;    		
+    	}*/
+    	/*.left{*/
+    		/*width: 0.1%; 由内容撑开高度*/
+    		/*padding-right: 20px;*/
+    	/*}*/
+    	/*.left, .right{
+    		display: table-cell;
+    	}*/
+
+
+    	/*3.flex*/
+    	.parent{display: flex;}
+    	.left{margin-right: 20px;}
+    	.right{flex: 1;}
+    </style>
+</head>
+<body>
+
+	<!-- 1 -->
+	<!-- <div class="parent">
+		<div class="left">
+			<p>left</p>
+		</div>
+		<div class="right">
+			<p>right</p>
+			<p>right</p>
+		</div>
+	</div> -->
+
+
+	<!-- 2 -->
+	<!-- <div class="parent">
+		<div class="left">
+			<p>left</p>
+		</div>
+		<div class="right">
+			<p>right</p>
+			<p>right</p>
+		</div>
+	</div> -->
+
+
+	<!-- 3 -->
+	<div class="parent">
+		<div class="left">
+			<p>left</p>
+		</div>
+		<div class="right">
+			<p>right</p>
+			<p>right</p>
+		</div>
+	</div>
+</body>
+</html>

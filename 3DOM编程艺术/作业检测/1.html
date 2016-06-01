@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>this</title>
+    <link id="link1" rel="stylesheet" href="xxx.css">
+    <style>
+
+    </style>
+    <script>
+    window.onload = function() {
+        // var oUl = document.getElementById('ul1');
+
+        // oUl.addEventListener('click', function(event){
+        //  console.log(event.currentTarget);
+        // },false);
+
+        // var form = document.forms[0];
+
+        // var input = document.forms[0].elements('userName');
+
+        // console.log(input);
+
+        // window.link1 = document.getElementById('link1');
+        // console.log(l);
+        // console.dir(link1);
+        
+        var oDiv = document.getElementById('div1');
+
+        var aInput = document.getElementsByTagName('input');
+
+        aInput[0].oninput = function(){
+            this.value = 0;
+        }
+
+        aInput[1].oninput = function(){
+            this.value = 1;
+        }
+
+
+        var oUser = document.getElementById('user');
+
+        console.log(oUser.getAttribute('first-name'));
+        console.log(oUser.dataset['data-first-name']);
+        console.log(oUser.getAttribute('data-first-name'));
+        console.log(oUser.dataset.firstName);
+
+        var oP = document.getElementById('p1');
+
+        console.log(oP.style.lineHeight);
+        // console.log(oP.style.substring(13,-1));
+        console.log(oP.style.cssText);
+        console.log(oP.style.cssText.lineHeight);
+
+
+        var oP2 = document.getElementById('profession');
+
+        console.log(oP2.children[0]);
+
+
+        var oLabel = document.getElementById('label1');
+
+        console.dir(oLabel);
+    };
+    </script>
+</head>
+
+<body>
+<!--     <form>
+        <input id="userName" name="userName">
+    </form> -->
+
+    <div><label id="label1" for="user">用户名：</label><input id="user"></div>
+
+    <p id="profession"><em id="m">微专业</em>是由<a id="n" href="http://study.163.com">网易云课堂</a>精心打造的职业化课程</p>
+
+
+    <p id="p1" style="line-height: 200px;">
+
+
+    <div id="user" data-first-name="Wei">aq</div>
+    <div id="div1">
+        <input type="text">
+        <ul id="ul1">
+            <li>再见青春</li>
+            <li>北京北京</li>
+            <input type="text">
+            <li>狗</li>
+        </ul>
+    </div>
+
+    <form action="#">
+        <input type="file">
+        <button type="submit">提交</button>
+    </form>
+</body>
+
+</html>
