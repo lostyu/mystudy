@@ -8,38 +8,63 @@
     <meta content="telephone=no" name="format-detection">
     <title>getElementsByClass</title>
     <script>
-		function getElementsByClassName(element, names){
-			if(document.getElementsByClassName){
-				return element.getElementsByClassName(names);
-			}else{
-				var aElements = element.getElementsByTagName('*');
-				var aNames = names.split(' ');	// 获取所有className['aaa', 'bb', '', '', 'dd'](包括空)
-				var element, aClassName, flag, aResult = [];
+		// function getElementsByClassName(element, names){
+		// 	if(document.getElementsByClassName){
+		// 		return element.getElementsByClassName(names);
+		// 	}else{
+		// 		var aElements = element.getElementsByTagName('*');
+		// 		var aNames = names.split(' ');	// 获取所有className['aaa', 'bb', '', '', 'dd'](包括空)
+		// 		var element, aClassName, flag, aResult = [];
 
-				for(var i=0, element; element=aElements[i] ;i++){
-					aClassName = element.className;
-					flag = true;
+		// 		for(var i=0, element; element=aElements[i] ;i++){
+		// 			aClassName = element.className;
+		// 			flag = true;
 					
-					for(var j=0; j<aNames.length; j++){
-						var reg = new RegExp("\\b"+ aNames[j] +"\\b");	// 正则匹配已单词为划分
-						if(reg.test(aClassName) == false){
-							flag = false;
-							break;
-						}
-					}
+		// 			for(var j=0; j<aNames.length; j++){
+		// 				var reg = new RegExp("\\b"+ aNames[j] +"\\b");	// 正则匹配已单词为划分
+		// 				if(reg.test(aClassName) == false){
+		// 					flag = false;
+		// 					break;
+		// 				}
+		// 			}
 
-					if(flag){
-						aResult.push(element);
-					}
-				}
+		// 			if(flag){
+		// 				aResult.push(element);
+		// 			}
+		// 		}
 
-				return aResult;
-			}
+		// 		return aResult;
+		// 	}
+		// }
+
+		function getElementsByClassName(element,names){
+		    if(element.getElementsByClassName){
+		        return element.getElementsByClassName(names);
+		    }
+		    var elements = element.getElementsByTagName("*");
+		    var result = [];
+		    var node,classNameStr,flag;
+		    names = names.split(' ');
+		    for(var i=0;node = elements[i];++i){
+		        classNameStr = ' ' + node.className + ' ';
+		        flag = true;
+		        for(var j=0; j<names.length; ++j){
+		            name = names[j];
+		            if(classNameStr.indexOf(' '+ name +' ')== -1){
+		                flag = false;
+		                break;
+		            }
+		        }
+		        if(flag){
+		            result.push(node);
+		        }
+		    }
+		    return result;
 		}
 
     	window.onload = function(){
     		var oDiv = document.getElementById('div1');
-    		var elements = getElementsByClassName(oDiv, 'aaa');
+    		var elements = getElementsByClassName(oDiv, 'ccc bbb');
 
     		console.log(elements);
     	};

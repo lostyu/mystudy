@@ -10,16 +10,58 @@
     <script>
     	// 函数getCookies()解析document.cookie， 并返回一个对象，    该对象的属性名为cookie的name，属性值为cookie的value。请写出该函数的实现代码
 
-		function getCookies(){
-			var obj = {};
-			var aTemp = document.cookie.split(';');
+		// function getCookies(){
+		// 	var obj = {};
+		// 	var aTemp = document.cookie.split(';');
 
-			for(var i=0;i<aTemp.length;i++){
-				var _temp = aTemp[i].split('=');				
-				obj[_temp[0]] = _temp[1];
-			}
+		// 	for(var i=0;i<aTemp.length;i++){
+		// 		var _temp = aTemp[i].split('=');				
+		// 		obj[_temp[0]] = _temp[1];
+		// 	}
 			
-			return obj;
+		// 	return obj;
+		// }
+
+		// document.cookie = 'name=Tony;';
+		// document.cookie = 'age=18;';
+		// document.cookie = 'path=wfsdlf&fdsjf=3094u30;';
+		// function getCookies(){
+		// 	var cookie = {};
+		// 	var all = document.cookie;
+		// 	if(all === ''){
+		// 		return cookie;
+		// 	}
+
+		// 	var list = all.split(';');
+		// 	for(var i=0;i<list.length;i++){
+		// 		var temp = list[i];
+		// 		var _index = temp.indexOf('=');
+		// 		var name = temp.substring(0, _index);
+		// 		name = decodeURIComponent(name);
+		// 		var value = temp.substring(_index+1);
+		// 		value = decodeURIComponent(value);
+		// 		cookie[name] = value;
+		// 	}
+
+		// 	return cookie;
+		// }
+
+
+		// ============================
+		function getCookies(){
+		    var result = [];
+		    var cookie = document.cookie;
+		    if(cookie!==""){
+		        var cookieArr = cookie.split(';');
+		        var reg = /^[\s]*(.*)=(.*)[\s]*$/;
+		        var ret;
+		        for(var i = 0, str; i < cookieArr.length; ++i){
+		            str = cookieArr[i];
+		            ret = str.match(reg);
+		            result[ret[1]]=ret[2];
+		        }
+		    }
+		    return result;
 		}
 
 		var ck = getCookies();
