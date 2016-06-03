@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no"/>
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>media</title>
+    <script></script>
+    <style>
+    	/* 高清屏的背景图片适配
+    	当我们把一个图标做成CSS中的背景图，在视网膜屏上预览时会发现图标是模糊的，所以我们会同时准备一个2倍大小的图标给高清屏，那么问题来了，怎么实现在普通屏下是普通背景图，而在高清屏下是用的高清图呢？想不出解决方案的同学也可以说说实现思路，或者可以说说别人的方案对不对好不好，有什么优点和缺点等。 */
+
+		.box{
+			width: 100px;
+			height: 100px;
+			/* background:#000 url(x1.png) no-repeat; */
+			/* background-size: 100px auto; */
+		}
+
+		@media screen and (-webkit-min-device-pixel-ratio: 3 ) {
+			.box{
+				background-color: red;
+				background-size: auto 100px;
+			}
+			
+		}
+
+    </style>
+</head>
+<body>
+
+<div class="box"></div>
+
+</body>
+</html>
