@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>日历选择</title>
+    <script></script>
+</head>
+
+<body>
+    <div>
+        <select name="year" id="year">
+            <option value="0">--</option>
+            <option value="1999">1999</option>
+            <option value="2000">2000</option>
+            <option value="2001">2001</option>
+        </select>年
+        <select name="month" id="month">
+            <option value="0">--</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="11">11</option>
+            <option value="12">12</option>
+        </select>月
+        <select name="date" id="date">
+            <option value="0">--</option>
+        </select>日
+    </div>
+    <script>
+    // var oYear = document.getElementById('year');
+    // var oMonth = document.getElementById('month');
+    // var oDate = document.getElementById('date');
+
+    // addEvent(oYear, 'change', function() {
+    // 	// this.value ie下会有兼容性问题，所以换成通过元素获取值
+    //     if (oYear.value != 0) {	    	
+    //         var date = new Date(oYear.value, 1, 0);
+    //         var m = date.getMonth();
+    //         var d = date.getDate();
+
+    //         fillSelect(oMonth, 12);
+    //         oMonth.value = 1;
+    //         fillSelect(oDate, d);
+    //         oDate.value = 1;
+    //     } else {
+    //         removeItem(oMonth);
+    //         removeItem(oDate);
+    //     }
+    // });
+
+    // addEvent(oMonth, 'change', function() {
+    //     var val = oMonth.value;
+
+    //     if (val != 0) {
+    //         var date = new Date(oYear.value, val, 0);
+    //         var d = date.getDate();
+    //         fillSelect(oDate, d);
+    //         oDate.value = 1;
+    //     } else {
+    //         removeItem(oDate);
+    //     }
+    // });
+
+    // function removeItem(element) {
+    //     for (var i = element.length - 1; i > 0; i--) {
+    //         element.remove(i);
+    //     }
+    // }
+
+    // function fillSelect(element, d) {
+    //     removeItem(element);
+
+    //     for (var i = 1; i <= d; i++) {
+    //         var option = new Option(i, i);
+    //         element.add(option);
+    //     }
+    // }
+
+    // function addEvent(element, type, fn) {
+    //     if (document.addEventListener) {
+    //         element.addEventListener(type, fn, false);
+    //     } else {
+    //         element.attachEvent('on' + type, fn);
+    //     }
+    // }
+
+
+
+    // =================================
+    function addEvent(obj, type, fn) {
+        if (obj.addEventListener) {
+            return obj.addEventListener(type, fn);
+        } else if (obj.attachEvent) {
+            return obj.attachEvent('on' + type, fn);
+        }
+    }
+    addEvent(window, 'load', function() {
+        var oYear = document.getElementById('year');
+        var oMonth = document.getElementById('month');
+        var oDate = document.getElementById('date');
+
+        function getDays(year, month) {
+            return new Date(year, month, 0).getDate();
+        }
+
+        function addDays(obj, index) {
+            if (obj.options[index].selected) {
+                oDate.options.length = 1;
+                if (index == 0) {
+                    if (obj.id == 'year') {
+                        oMonth.options[0].selected = true;
+                    }
+                    return;
+                }
+                var year = oYear.options[oYear.selectedIndex].value;
+                if (year == 0) return;
+                var month = oMonth.options[oMonth.selectedIndex].value;
+                if (month == 0) return;
+                var date = getDays(year, month);
+                for (var j = 1; j <= date; j++) {
+                    var opt = document.createElement('option');
+                    opt.appendChild(document.createTextNode('' + j));
+                    opt.setAttribute('value', '' + j);
+                    oDate.appendChild(opt);
+                }
+            }
+        }
+        addEvent(oYear, 'change', function() {
+            for (var i = 0; i <= 3; i++) {
+                addDays(this, i);
+            }
+        });
+        addEvent(oMonth, 'change', function() {
+            for (var i = 0; i <= 12; i++) {
+                addDays(this, i);
+            }
+        });
+
+    });
+    </script>
+</body>
+
+</html>

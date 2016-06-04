@@ -35,7 +35,7 @@ var emitter = {
   },
   // 触发事件
   emit: function(event){
-    var args = [].slice.call(arguments, 1),
+    var args = [].slice.call(arguments, 1), 
       handles = this._handles, calls;
 
     if (!handles || !(calls = handles[event])) return this;
@@ -102,9 +102,7 @@ var emitter = {
     // 将options 复制到 组件实例上
     extend(this, options);
 
-
     this._initEvent();
-
   }
 
 
@@ -131,6 +129,7 @@ var emitter = {
     // 显示弹窗
     show: function(content){
       
+      console.log(Modal.prototype);
       if(content) this.setContent(content);
 
       document.body.appendChild(this.container);

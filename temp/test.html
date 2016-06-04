@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style">
+    <meta content="telephone=no" name="format-detection">
+    <title>test</title>
+    <script>
+    function getElementsByClassName(element, names) {
+        if (document.getElementsByClassName) {
+            return element.getElementsByClassName(names)
+        } else {
+            var elements = element.getElementsByTagName('*');
+            var classNames = names.split(' ');
+            var result = [];
+            var element,
+                classNameStr,
+                flag;
+            for (var i = 0; element = elements[i]; i++) {
+                classNamestr = ' ' + element.className + ' ';
+                flag = true;
+                for (var j = 0, className; className = classNames[j]; j++) {
+                    if (classNameStr.indexOf(' ' + className + ' ') == '-1') {
+                        flag = false;
+                        break;
+                    }
+                }
+            }
+            if (flag) {
+                result.push(element);
+            }
+            return result;
+        }
+    }
+    </script>
+</head>
+
+<body>
+</body>
+
+</html>

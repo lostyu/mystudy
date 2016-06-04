@@ -9,9 +9,9 @@
     <title>getElementsByClassName</title>
     <script>
     function getByClassName(root, className) {
-        if (root.getElementsByClassName) {
-            return root.getElementsByClassName(className);
-        } else {
+        // if (root.getElementsByClassName) {
+        //     return root.getElementsByClassName(className);
+        // } else {
             var aElements = root.getElementsByTagName('*');
             var aResult = [];
             var element,
@@ -43,13 +43,13 @@
 
             return aResult;
 
-        }
+        // }
     }
 
     window.onload = function() {
 
         var oDiv = document.getElementById('div1');
-        console.log(getByClassName(oDiv, '   user    user2'));
+        console.log(getByClassName(oDiv, '   use'));
         console.log(getByClassName(oDiv, 'user  '));
 
         // var str = 'class1 type    active';
